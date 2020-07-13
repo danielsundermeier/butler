@@ -1,0 +1,33 @@
+{
+    "name": "d15r/butler",
+    "description": "CLI Tool to execute tasks.",
+    "keywords": ["butler"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Sundermeier",
+            "email": "daniel@hof-sundermeier.de"
+        }
+    ],
+    "require": {
+        "symfony/console": "^5.0",
+        "symfony/process": "^5.1",
+        "symfony/finder": "^5.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.1"
+    },
+    "bin": [
+        "bin/butler"
+    ],
+    "autoload": {
+        "psr-4": {
+            "D15r\\Butler\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "D15r\\Butler\\Tests\\": "tests/"
+        }
+    }
+}
