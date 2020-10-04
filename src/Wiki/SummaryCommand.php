@@ -15,7 +15,7 @@ class SummaryCommand extends Command
         $this
             ->setName('wiki:summary')
             ->setDescription('Creates or updates the SUMMARY.md files')
-            ->addArgument('path', InputArgument::REQUIRED, 'path to the wiki');
+            ->addArgument('path', InputArgument::OPTIONAL, 'path to the wiki', '/Users/daniel/code/knowledge');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -51,7 +51,9 @@ class SummaryCommand extends Command
             $bytes = $summary->fwrite(str_repeat(' ', $level * 4) . '- [' . $filename . '](' . $url . ')' . "\n");
         }
 
-        return 0;
+        $output->writeln('Fertig');
+
+        return Command::SUCCESS;
     }
 
     protected function files($path) : Finder
