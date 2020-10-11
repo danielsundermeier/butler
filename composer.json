@@ -29,5 +29,7 @@
         "psr-4": {
             "D15r\\Butler\\Tests\\": "tests/"
         }
+    },
+    "repositories": {
     }
 }

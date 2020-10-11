@@ -1,4 +1,9 @@
 [
     "D15r\\Butler\\Make\\CommandCommand",
+    "D15r\\Butler\\Package\\CloneCommand",
+    "D15r\\Butler\\Package\\NewCommand",
+    "D15r\\Butler\\Package\\PublishCommand",
+    "D15r\\Butler\\Package\\PushCommand",
+    "D15r\\Butler\\Package\\RemoveCommand",
     "D15r\\Butler\\Wiki\\SummaryCommand"
 ]

@@ -2,6 +2,7 @@
 
 namespace D15r\Butler\Make;
 
+use D15r\Butler\Support\File;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -77,7 +78,7 @@ class CommandCommand extends Command
 
     protected function make(string $file_path, string $stub)
     {
-        mkdir(dirname($file_path), 0777, true);
+        File::makeDirectory(dirname($file_path));
         return file_put_contents($file_path, $stub);
     }
 

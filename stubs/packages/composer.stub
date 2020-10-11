@@ -1,0 +1,33 @@
+{
+    "name": "{{ package_name }}",
+    "description": "Description.",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Sundermeier",
+            "email": "daniel@d15r.de"
+        }
+    ],
+    "require": {
+
+    },
+    "require-dev": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "{{ namespace }}\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "{{ namespace }}\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
