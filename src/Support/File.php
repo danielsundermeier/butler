@@ -36,4 +36,20 @@ class File
 
         return rmdir($path);
     }
+
+    public static function replaceContent(string $path, array $search = [], array $replace = []) : int
+    {
+        return self::makeFromStub($path, $path, $search, $replace);
+    }
+
+    public static function makeFromStub(string $path, string $stub_path, array $search = [], array $replace = []) : int
+    {
+        $stub = file_get_contents($stub_path);
+
+        if (count($search)) {
+            $stub = str_replace($search, $replace, $stub);
+        }
+
+        return file_put_contents($path, $stub);
+    }
 }

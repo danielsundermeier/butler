@@ -1,4 +1,5 @@
 [
+    "D15r\\Butler\\Laravel\\NewCommand",
     "D15r\\Butler\\Make\\CommandCommand",
     "D15r\\Butler\\Package\\CloneCommand",
     "D15r\\Butler\\Package\\NewCommand",

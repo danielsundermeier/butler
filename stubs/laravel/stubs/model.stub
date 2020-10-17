@@ -1,0 +1,38 @@
+<?php
+
+namespace {{ namespace }};
+
+use D15r\Traits\HasPath;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class {{ class }} extends Model
+{
+    use HasFactory, HasPath;
+
+    protected $appends = [
+        //
+    ];
+
+    protected $casts = [
+        //
+    ];
+
+    protected $dates = [
+        //
+    ];
+
+    protected $fillable = [
+        //
+    ];
+
+    public function isDeletable() : bool
+    {
+        return true;
+    }
+
+    protected function getBaseRouteAttribute() : string
+    {
+        return '';
+    }
+}
