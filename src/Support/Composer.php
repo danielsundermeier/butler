@@ -34,13 +34,18 @@ class Composer
         ]);
     }
 
-    public static function makeJsonFile(string $package_path, array $replace)
+    public static function makeJsonFile(string $package_path, array $replace, string $stub = 'plain.stub')
     {
         $stub = str_replace([
             '{{ namespace }}',
             '{{ package_name }}',
-        ], $replace, file_get_contents(__DIR__ . '/../../../stubs/packages/composer.stub'));
+        ], $replace, file_get_contents(__DIR__ . '/../../stubs/packages/composer/' . $stub));
         file_put_contents($package_path . '/composer.json', $stub);
+    }
+
+    public static function addLaravelExtras() : void
+    {
+
     }
 
     public static function install(string $package_name, string $package_path)

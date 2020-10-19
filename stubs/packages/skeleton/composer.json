@@ -6,7 +6,7 @@
     "authors": [
         {
             "name": "Daniel Sundermeier",
-            "email": "daniel@d15r.de"
+            "email": "packages@d15r.de"
         }
     ],
     "require": {
@@ -17,12 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "{{ namespace }}\\": "src/"
+            "{{ vendor_namespace }}\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "{{ namespace }}\\Tests\\": "tests/"
+            "{{ vendor_namespace }}\\Tests\\": "tests/"
         }
     },
     "config": {

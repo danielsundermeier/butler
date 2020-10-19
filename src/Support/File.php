@@ -4,6 +4,13 @@ namespace D15r\Butler\Support;
 
 class File
 {
+    public static function copySkeleton(string $source, string $package_path = '') : void
+    {
+        $destination = str_replace('/' . basename($package_path), '', $package_path);
+        exec('cp -r ' . $source . ' ' . $destination);
+        rename($destination . '/' . basename($source), $package_path);
+    }
+
     public static function makeDirectory(string $path) : void
     {
         if (is_dir($path)) {
@@ -35,6 +42,37 @@ class File
         }
 
         return rmdir($path);
+    }
+
+    public static function delete(string $path)
+    {
+        unlink($path);
+    }
+
+    public static function replaceAllPlaceholders(string $path, array $search = [], array $replace = [])
+    {
+        $files = new \RecursiveDirectoryIterator($path);
+        foreach (new \RecursiveIteratorIterator($files) as $file) {
+            if (! $file->isFile()) {
+                continue;
+            }
+            self::replaceContent($file->getPath().'/'.$file->getFilename(), $search, $replace);
+        }
+    }
+
+    public static function renameFiles(string $path, array $search = [], array $replace = [])
+    {
+        $files = new \RecursiveDirectoryIterator($path);
+        foreach (new \RecursiveIteratorIterator($files) as $file) {
+            if (! $file->isFile()) {
+                continue;
+            }
+            $replaced = str_replace($search, $replace, $file->getFilename());
+            if ($replaced === $file->getFilename()) {
+                continue;
+            }
+            rename($file->getPath().'/'.$file->getFilename(), $file->getPath().'/'.$replaced);
+        }
     }
 
     public static function replaceContent(string $path, array $search = [], array $replace = []) : int
