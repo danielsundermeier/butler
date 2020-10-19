@@ -19,6 +19,8 @@ class NewCommand extends Command
         'laravel/telescope',
         'laravel/tinker',
         'spatie/laravel-cookie-consent',
+        'laravel/jetstream',
+        'laravel/sanctum',
         // 'danielsundermeier/laravel-deploy',
         // 'danielsundermeier/laravel-contactform',
         // 'danielsundermeier/laravel-impressum',
@@ -43,7 +45,7 @@ class NewCommand extends Command
         $this->name = $input->getArgument('name');
 
         // Update laravel/installer
-        exec('composer global update laravel/installer');
+        // exec('composer global update laravel/installer');
 
         // laravel new
         exec('laravel new ' . $this->name);
@@ -63,6 +65,12 @@ class NewCommand extends Command
 
         // pubish stubs
         exec('php artisan stub:publish');
+
+        // link storage
+        exec('php artisan storage:link');
+
+        // install livewire
+        exec('php artisan jetstream:install livewire');
 
         // replace stubs with my own
         foreach (glob(__DIR__ . '/../../stubs/laravel/stubs/*.stub') as $filename) {
@@ -87,6 +95,9 @@ class NewCommand extends Command
 
         // npm run dev
         exec('npm run dev');
+
+        // migrate database
+        exec('php artisan migrate');
 
         // create sublime text project
         File::makeFromStub(self::SUBLIME_TEXT_PROJECTS_PATH . $this->name . '.sublime-project', __DIR__ . '/../../stubs/laravel/stub.sublime-project', [
