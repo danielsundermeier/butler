@@ -62,22 +62,12 @@ class Composer
 
     public static function require(string $package_name, string $version = '') : bool
     {
-        $command = [
-            'composer',
-            'require',
-            $package_name . ($version ? ':' . $version : '')
-        ];
-
-        return self::run($command);
+        return exec('COMPOSER_MEMORY_LIMIT=2G composer require ' . $package_name . ($version ? ':' . $version : ''));
     }
 
     public static function remove(string $package_name) : bool
     {
-        return self::run([
-            'composer',
-            'remove',
-            $package_name
-        ]);
+        return exec('COMPOSER_MEMORY_LIMIT=2G composer remove ' . $package_name);
     }
 
     protected static function run(array $command) : bool
