@@ -14,13 +14,15 @@ class Git
         exec('cd ' . $package_path . ' && git init && git add --all && git commit -m "Initial commit"');
     }
 
-    public static function publish(string $package_path, string $url) : void
+    public static function publish(string $package_path, string $url = '') : void
     {
         if (! file_exists($package_path . '/.git/')) {
             self::init($package_path);
         }
 
-        exec('cd ' . $package_path . ' && git remote add origin ' . $url);
+        if ($url) {
+            exec('cd ' . $package_path . ' && git remote add origin ' . $url);
+        }
         exec('cd ' . $package_path . ' && git push -u origin master');
     }
 
@@ -32,5 +34,14 @@ class Git
     public static function release(string $package_path, string $version) : void
     {
         exec('cd ' . $package_path . ' && gh release create ' . $version);
+    }
+
+    public static function createRepository(string $package_path) : void
+    {
+        if (! file_exists($package_path . '/.git/')) {
+            self::init($package_path);
+        }
+
+        exec('cd ' . $package_path . ' && gh repo create --public --confirm ' . str_replace('packages/', '', $package_path));
     }
 }
