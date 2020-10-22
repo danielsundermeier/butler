@@ -75,7 +75,6 @@ class NewCommand extends Command
         }
 
         File::renameFiles($package_path, ['MyVendor', 'MyPackage', 'myvendor', 'mypackage'], [$vendor_namespace, $name_namespace, $vendor, $name]);
-        exit;
 
         $output->writeln('installing package.');
         Composer::install($package_name, $package_path);
