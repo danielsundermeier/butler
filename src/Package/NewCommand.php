@@ -16,6 +16,7 @@ class NewCommand extends Command
 {
     const LARAVEL_FILES = [
         '/src/MyPackageServiceProvider.php',
+        '/src/Http/Controllers/Controller.php',
     ];
 
     protected function configure()
