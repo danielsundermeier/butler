@@ -21,15 +21,15 @@ class NewCommand extends Command
         'spatie/laravel-cookie-consent',
         'laravel/jetstream',
         'laravel/sanctum',
-        // 'danielsundermeier/laravel-deploy',
+        'danielsundermeier/laravel-laravel-deploy',
         // 'danielsundermeier/laravel-contactform',
         // 'danielsundermeier/laravel-impressum',
         // 'danielsundermeier/laravel-isdeleteable',
-        // 'danielsundermeier/laravel-haspath',
+        'danielsundermeier/laravel-model-path',
     ];
     protected $dev_packages = [
         'barryvdh/laravel-debugbar',
-        // 'danielsundermeier/laravel-make',
+        'danielsundermeier/laravel-make',
     ];
 
     protected function configure()
