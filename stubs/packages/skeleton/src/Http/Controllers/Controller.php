@@ -1,6 +1,6 @@
 <?php
 
-namespace D15r\Deployment\Http\Controllers;
+namespace {{ vendor_namespace }}\{{ name_namespace }}\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

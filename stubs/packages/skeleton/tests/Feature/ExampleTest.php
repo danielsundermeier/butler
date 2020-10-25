@@ -1,9 +1,9 @@
 <?php
 
-namespace D15r\Deployment\Tests\Feature;
+namespace {{ vendor_namespace }}\{{ name_namespace }}\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use D15r\Deployment\Tests\TestCase;
+use {{ vendor_namespace }}\{{ name_namespace }}\Tests\TestCase;
 
 class ExampleTest extends TestCase
 {

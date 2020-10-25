@@ -17,12 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "{{ vendor_namespace }}\\": "src/"
+            "{{ vendor_namespace }}\\{{ name_namespace }}\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "{{ vendor_namespace }}\\Tests\\": "tests/"
+            "{{ vendor_namespace }}\\{{ name_namespace }}\\Tests\\": "tests/"
         }
     },
     "config": {
