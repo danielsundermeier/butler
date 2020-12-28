@@ -21,7 +21,7 @@ class NewCommand extends Command
         'spatie/laravel-cookie-consent',
         'laravel/jetstream',
         'laravel/sanctum',
-        'danielsundermeier/laravel-laravel-deploy',
+        'danielsundermeier/laravel-deploy',
         // 'danielsundermeier/laravel-contactform',
         // 'danielsundermeier/laravel-impressum',
         // 'danielsundermeier/laravel-isdeleteable',
