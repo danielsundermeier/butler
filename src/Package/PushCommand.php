@@ -18,14 +18,17 @@ class PushCommand extends Command
             ->setDescription('Description')
             ->addArgument('package_name', InputArgument::REQUIRED, 'Name of the package')
             ->addArgument('message', InputArgument::OPTIONAL, 'Message for the commit', 'update')
-            ->addOption('release', null, InputOption::VALUE_REQUIRED, 'Create a release?');
+            ->addOption('release', null, InputOption::VALUE_REQUIRED, 'Create a release?')
+            ->addOption('major', null, InputOption::VALUE_NONE, 'Create a major release?')
+            ->addOption('minor', null, InputOption::VALUE_NONE, 'Create a minor release?')
+            ->addOption('patch', null, InputOption::VALUE_NONE, 'Create a patchrelease?');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $package_name = $input->getArgument('package_name');
         $package_path = 'packages/' . $package_name;
-        $release = $input->getOption('release');
+        $release = $input->getOption('release') ?: $this->getNextRelease($input, $package_path);
 
         Git::push($package_path, $input->getArgument('message'));
 
@@ -36,5 +39,26 @@ class PushCommand extends Command
         $output->writeln('Fertig');
 
         return Command::SUCCESS;
+    }
+
+    protected function getNextRelease(InputInterface $input, string $package_path)
+    {
+        $patch = $input->getOption('patch');
+        $minor = $input->getOption('minor');
+        $major = $input->getOption('major');
+
+        if (! $patch && ! $minor && !$major) {
+            return '';
+        }
+
+        $last_release = Git::lastRelease($package_path);
+        var_dump($last_release);
+        $next_release = $last_release;
+        foreach ($next_release as $key => $part) {
+            var_dump($key, $$key, (int) $$key);
+            $next_release[$key] += (int) $$key;
+        }
+
+        return implode('.', $next_release);
     }
 }

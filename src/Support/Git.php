@@ -44,4 +44,25 @@ class Git
 
         exec('cd ' . $package_path . ' && gh repo create --public --confirm ' . str_replace('packages/', '', $package_path));
     }
+
+    public static function lastRelease(string $package_path)
+    {
+        exec('cd ' . $package_path . ' && gh release view', $output);
+
+        if (empty($output)) {
+            return [
+                'major' => 0,
+                'minor' => 0,
+                'patch' => 0,
+            ];
+        }
+        $tag = trim(str_replace('tag:', '', $output[1]));
+        $parts = explode('.', $tag);
+
+        return [
+            'major' => $parts[0],
+            'minor' => $parts[1],
+            'patch' => $parts[2],
+        ];
+    }
 }
