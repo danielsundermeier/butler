@@ -15,7 +15,7 @@ class SummaryCommand extends Command
         $this
             ->setName('wiki:summary')
             ->setDescription('Creates or updates the SUMMARY.md files')
-            ->addArgument('path', InputArgument::OPTIONAL, 'path to the wiki', '/Users/daniel/code/knowledge');
+            ->addArgument('path', InputArgument::OPTIONAL, 'path to the wiki', '/Users/daniel/code/danielsundermeier/knowledge');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
