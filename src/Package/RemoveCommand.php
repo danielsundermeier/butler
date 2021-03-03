@@ -30,6 +30,9 @@ class RemoveCommand extends Command
         Composer::uninstall($package_name);
         File::deleteDirectory($package_path);
 
+        // Symlink löschen
+        File::delete('vendor/' . $package_name);
+
         if ($require) {
             Composer::require($package_name);
         }
