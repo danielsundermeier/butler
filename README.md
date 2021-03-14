@@ -29,7 +29,11 @@ butler laravel new name
 
 ### Summary
 
-creates a SUMMARY.md from markdon files for gitbook
+creates a SUMMARY.md from markdown files for gitbook
+
+```
+butler wiki:summary
+```
 
 ## Package
 
