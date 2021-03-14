@@ -15,11 +15,9 @@ class NewCommand extends Command
     protected $name;
 
     protected $packages = [
-        'geo-sot/laravel-env-editor',
         'laravel/telescope',
         'laravel/tinker',
         'spatie/laravel-cookie-consent',
-        'laravel/jetstream',
         'laravel/sanctum',
         'danielsundermeier/laravel-deploy',
         // 'danielsundermeier/laravel-contactform',
@@ -28,6 +26,7 @@ class NewCommand extends Command
         'danielsundermeier/laravel-model-path',
     ];
     protected $dev_packages = [
+        'laravel/breeze',
         'barryvdh/laravel-debugbar',
         'danielsundermeier/laravel-make',
     ];
@@ -45,7 +44,7 @@ class NewCommand extends Command
         $this->name = $input->getArgument('name');
 
         // Update laravel/installer
-        // exec('composer global update laravel/installer');
+        exec('composer global update laravel/installer');
 
         // laravel new
         exec('laravel new ' . $this->name);
@@ -70,7 +69,7 @@ class NewCommand extends Command
         exec('php artisan storage:link');
 
         // install livewire
-        exec('php artisan jetstream:install livewire');
+        exec('php artisan breeze:install');
 
         // replace stubs with my own
         foreach (glob(__DIR__ . '/../../stubs/laravel/stubs/*.stub') as $filename) {
@@ -85,7 +84,7 @@ class NewCommand extends Command
         ]);
 
         // create database
-        exec('mysql -uroot -e"CREATE DATABASE IF NOT EXISTS ' . $this->name . '"');
+        $this->createDatabase($this->name);
 
         // git init
         exec('git init');
@@ -114,5 +113,11 @@ class NewCommand extends Command
         $output->writeln('Fertig');
 
         return Command::SUCCESS;
+    }
+
+    protected function createDatabase(string $name) : void
+    {
+        $database_name = str_replace('-', '_', $name);
+        exec('mysql -uroot -e"CREATE DATABASE IF NOT EXISTS ' . $database_name . '"');
     }
 }
