@@ -2,6 +2,32 @@
 
 A CLI Tool to automate my tasks
 
+## Installation
+
+Als Repository in globale composer.json einfügen und requiren.
+
+```bash
+subl /Users/$USER/.composer/composer.json
+```
+
+```json
+{
+    "require": {
+        "d15r/butler": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/Users/$USER/code/danielsundermeier/butler"
+        }
+    ]
+}
+```
+
+```bash
+composer global update
+```
+
 ## Laravel
 
 ### New
@@ -29,7 +55,17 @@ butler laravel new name
 
 ### Summary
 
-creates a SUMMARY.md from markdown files for gitbook
+reates a SUMMARY.md from markdown files for gitbook
+
+```
+butler wiki:summary
+```
+
+### Read
+
+#### Archive
+
+copies the contents of reading.md to its archive read/YEAR/WEEK.md
 
 ```
 butler wiki:summary
