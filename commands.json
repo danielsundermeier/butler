@@ -6,5 +6,6 @@
     "D15r\\Butler\\Package\\PublishCommand",
     "D15r\\Butler\\Package\\PushCommand",
     "D15r\\Butler\\Package\\RemoveCommand",
-    "D15r\\Butler\\Wiki\\SummaryCommand"
+    "D15r\\Butler\\Wiki\\SummaryCommand",
+    "D15r\\Butler\\Wiki\\Read\\ArchiveCommand"
 ]
