@@ -15,7 +15,7 @@ class ArchiveCommand extends Command
     {
         $this
             ->setName('wiki:read:archive')
-            ->setDescription('Copies the contents of reading.md to its archive')
+            ->setDescription('Copies the contents of reading.md to its archive read/YEAR/WEEK.md')
             ->addArgument('path', InputArgument::OPTIONAL, 'path to the wiki', '/Users/daniel/code/danielsundermeier/knowledge');
     }
 
